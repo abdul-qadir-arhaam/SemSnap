@@ -1,0 +1,124 @@
+{
+  "subjects": {
+
+    "BCS301": 4,
+    "BCS302": 4,
+    "BCS303": 4,
+    "BCS304": 3,
+    "BCSL305": 1,
+    "BCS306A": 3,
+    "BCS306B": 3,
+    "BSCK307": 1,
+
+    "BCS358A": 1,
+    "BCS358B": 1,
+    "BCS358C": 1,
+    "BCS358D": 1,
+
+    "BCS401": 3,
+    "BCS402": 4,
+    "BCS403": 4,
+    "BCSL404": 1,
+
+    "BCS405A": 3,
+    "BCS405B": 3,
+    "BCS405C": 3,
+    "BCS405D": 3,
+
+    "BCS456A": 1,
+    "BCS456B": 1,
+    "BCS456C": 1,
+    "BCSL456D": 1,
+
+    "BDSL456A": 1,
+    "BDSL456B": 1,
+    "BDSL456C": 1,
+
+    "BDSL557A": 3,
+    "BDSL557B": 3,
+    "BDSL557C": 3,
+
+    "BDSL658A": 3,
+    "BDSL658B": 3,
+    "BDSL658C": 3,
+
+    "BDSL759A": 3,
+    "BDSL759B": 3,
+    "BDSL759C": 3,
+
+
+    "BAIL456A": 3,
+    "BAIL456B": 3,
+    "BAIL456C": 3,
+
+    "BAIL557A": 3,
+    "BAIL557B": 3,
+    "BAIL557C": 3,
+
+    "BAIL658A": 3,
+    "BAIL658B": 3,
+    "BAIL658C": 3,
+
+    "BAIL759A": 3,
+    "BAIL759B": 3,
+    "BAIL759C": 3,
+    
+     
+    
+
+    "BBOC407": 2,
+    "BUHK408": 1,
+
+    "BCS501": 3,
+    "BCS502": 4,
+    "BCS503": 4,
+    "BCSL504": 1,
+
+    "BCS515A": 3,
+    "BCS515B": 3,
+    "BCS515C": 3,
+    "BCS515D": 3,
+
+    "BCS586": 2,
+    "BCD586": 2,
+    "BRMK557": 3,
+    "BCS508": 2,
+    "BAI515A": 3,
+
+    "BCS601": 4,
+    "BCS602": 4,
+    "BCSL606": 1,
+    "BCS685": 2,
+
+    "BCS613A": 3,
+    "BCS613B": 3,
+    "BCS613C": 3,
+    "BCS613D": 3,
+
+    "BCS654A": 3,
+    "BCS654B": 3,
+    "BIS654C": 3,
+    "BAI654D": 3,
+
+    "BISL657A": 1,
+    "BCSL657B": 1,
+    "BAIL657C": 1,
+    "BCSL657D": 1,
+    "BAIL504":1,
+
+    "BIKS609": 0,
+
+    "BNSK359": 0,
+    "BPEK359": 0,
+    "BYOK359": 0,
+    "BNSK459": 0,
+    "BPEK459": 0,
+    "BYOK459": 0,
+    "BNSK559": 0,
+    "BPEK559": 0,
+    "BYOK559": 0,
+    "BNSK658": 0,
+    "BPEK658": 0,
+    "BYOK658": 0
+  }
+}

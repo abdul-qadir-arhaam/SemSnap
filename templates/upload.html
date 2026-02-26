@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Upload Semester Result PDFs</h2>
+
+<p>Scheme: {{ scheme }}</p>
+
+<form method="POST" enctype="multipart/form-data">
+
+    {% for i in range(1, sem_count + 1) %}
+        <label>Semester {{ i }} Result:</label><br>
+        <input type="file" name="sem{{ i }}" accept=".pdf" required>
+        <br><br>
+    {% endfor %}
+
+    <button type="submit">Calculate CGPA</button>
+
+</form>
+
+{% endblock %}

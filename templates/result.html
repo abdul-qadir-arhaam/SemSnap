@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Final CGPA</h2>
+
+{% if cgpa is not none %}
+    <h3>{{ cgpa }}</h3>
+{% else %}
+    <h3>Unable to calculate CGPA</h3>
+{% endif %}
+
+<br>
+
+{% if missing_subjects %}
+    <h4>⚠ Subjects Not Found in Scheme:</h4>
+    <ul>
+        {% for code in missing_subjects %}
+            <li>{{ code }}</li>
+        {% endfor %}
+    </ul>
+    <p>Please verify your scheme data file.</p>
+{% endif %}
+
+<br>
+
+<a href="/">Calculate Again</a>
+
+{% endblock %}
