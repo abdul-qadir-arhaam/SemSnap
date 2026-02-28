@@ -1,0 +1,23 @@
+{
+  "name": "semsnap",
+  "version": "1.0.0",
+  "description": "📘 SemSnap",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdul-qadir-arhaam/SemSnap.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdul-qadir-arhaam/SemSnap/issues"
+  },
+  "homepage": "https://github.com/abdul-qadir-arhaam/SemSnap#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.4"
+  }
+}
