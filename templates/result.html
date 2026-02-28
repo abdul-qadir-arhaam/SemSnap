@@ -1,62 +1,111 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VTU CGPA Results</title>
 
-{% block content %}
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 
-<h2>📊 Academic Performance Summary</h2>
+<script>
+tailwind.config = {
+darkMode: "class",
+theme: {
+extend: {
+colors: {
+"primary": "#2463eb",
+"background-light": "#f6f6f8",
+"background-dark": "#111621",
+},
+fontFamily: {
+"display": ["Inter", "sans-serif"]
+}
+}
+}
+}
+</script>
+</head>
 
-<!-- -------------------------------
-     Semester-wise SGPA Section
--------------------------------- -->
-<h3>Semester-wise SGPA</h3>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
 
-{% if semester_sgpas %}
-    <ul>
-        {% for sem, sgpa in semester_sgpas.items() %}
-            <li>
-                <strong>Semester {{ sem }}:</strong>
-                {{ sgpa if sgpa is not none else "Unable to calculate" }}
+<div class="max-w-[900px] mx-auto px-6 py-10">
 
-                {% if semester_missing[sem] %}
-                    <br>
-                    <small style="color: red;">
-                        Missing Subjects:
-                        {{ semester_missing[sem] | join(', ') }}
-                    </small>
-                {% endif %}
-            </li>
-            <br>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Unable to calculate semester-wise SGPA.</p>
-{% endif %}
+<!-- Header -->
+<header class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg text-white">
+<span class="material-symbols-outlined">calculate</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">VTU CGPA Calculator</h1>
+</div>
+</header>
 
+<!-- CGPA Card -->
+<div class="p-8 bg-white dark:bg-slate-900 rounded-xl shadow-lg text-center mb-10">
 
-<hr>
-
-<!-- -------------------------------
-     Final CGPA Section
--------------------------------- -->
-<h3>Final Weighted CGPA</h3>
+<p class="text-sm uppercase tracking-wider text-slate-500 mb-2">
+Cumulative Grade Point Average
+</p>
 
 {% if cgpa is not none %}
-    <h2>{{ cgpa }}</h2>
+<h1 class="text-primary text-6xl font-black">{{ cgpa }}</h1>
+<p class="mt-2 text-lg font-medium">Final Weighted CGPA</p>
 {% else %}
-    <h3>Unable to calculate CGPA</h3>
+<h1 class="text-red-500 text-4xl font-bold">Unable to calculate</h1>
 {% endif %}
 
+</div>
+
+<!-- Semester Breakdown -->
+<h2 class="text-xl font-bold mb-4">Semester Wise Breakdown</h2>
+
+{% if semester_sgpas %}
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+{% for sem, sgpa in semester_sgpas.items() %}
+<div class="bg-white dark:bg-slate-900 p-5 rounded-lg border border-slate-200 dark:border-slate-800 text-center shadow-sm hover:border-primary/50 transition-colors">
+<div class="size-12 mx-auto mb-3 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="text-primary font-bold">S{{ sem }}</span>
+</div>
+<p class="text-lg font-bold">
+{{ sgpa if sgpa is not none else "N/A" }}
+</p>
+<p class="text-xs uppercase text-slate-400">SGPA</p>
+</div>
+{% endfor %}
+</div>
+{% else %}
+<p class="text-slate-500 mb-8">No semester data available.</p>
+{% endif %}
+
+<!-- Missing Subjects -->
 {% if total_missing %}
-    <h4 style="color: red;">⚠ Subjects Not Found in Scheme:</h4>
-    <ul>
-        {% for code in total_missing %}
-            <li>{{ code }}</li>
-        {% endfor %}
-    </ul>
-    <p>Please verify your scheme JSON file.</p>
+<div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/50 rounded-lg p-5 mb-6">
+<p class="font-bold text-red-700 dark:text-red-400 mb-2">
+Missing Subjects:
+</p>
+<ul class="list-disc list-inside text-red-600 dark:text-red-300 text-sm">
+{% for code in total_missing %}
+<li>{{ code }}</li>
+{% endfor %}
+</ul>
+</div>
 {% endif %}
 
-<br><br>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-4 mt-6">
+<a href="/" 
+class="flex-1 text-center py-3 bg-primary text-white rounded-lg font-bold shadow-lg hover:bg-primary/90 transition-colors">
+Calculate Again
+</a>
+</div>
 
-<a href="/">🔄 Calculate Again</a>
+<!-- Footer -->
+<footer class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800 text-center text-slate-500 text-sm">
+© 2024 VTU CGPA Calculator. Designed for students.
+</footer>
 
-{% endblock %}
+</div>
+</body>
+</html>
