@@ -2,28 +2,61 @@
 
 {% block content %}
 
-<h2>Final CGPA</h2>
+<h2>📊 Academic Performance Summary</h2>
+
+<!-- -------------------------------
+     Semester-wise SGPA Section
+-------------------------------- -->
+<h3>Semester-wise SGPA</h3>
+
+{% if semester_sgpas %}
+    <ul>
+        {% for sem, sgpa in semester_sgpas.items() %}
+            <li>
+                <strong>Semester {{ sem }}:</strong>
+                {{ sgpa if sgpa is not none else "Unable to calculate" }}
+
+                {% if semester_missing[sem] %}
+                    <br>
+                    <small style="color: red;">
+                        Missing Subjects:
+                        {{ semester_missing[sem] | join(', ') }}
+                    </small>
+                {% endif %}
+            </li>
+            <br>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Unable to calculate semester-wise SGPA.</p>
+{% endif %}
+
+
+<hr>
+
+<!-- -------------------------------
+     Final CGPA Section
+-------------------------------- -->
+<h3>Final Weighted CGPA</h3>
 
 {% if cgpa is not none %}
-    <h3>{{ cgpa }}</h3>
+    <h2>{{ cgpa }}</h2>
 {% else %}
     <h3>Unable to calculate CGPA</h3>
 {% endif %}
 
-<br>
-
-{% if missing_subjects %}
-    <h4>⚠ Subjects Not Found in Scheme:</h4>
+{% if total_missing %}
+    <h4 style="color: red;">⚠ Subjects Not Found in Scheme:</h4>
     <ul>
-        {% for code in missing_subjects %}
+        {% for code in total_missing %}
             <li>{{ code }}</li>
         {% endfor %}
     </ul>
-    <p>Please verify your scheme data file.</p>
+    <p>Please verify your scheme JSON file.</p>
 {% endif %}
 
-<br>
+<br><br>
 
-<a href="/">Calculate Again</a>
+<a href="/">🔄 Calculate Again</a>
 
 {% endblock %}

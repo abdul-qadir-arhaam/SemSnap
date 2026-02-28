@@ -33,7 +33,7 @@ def marks_to_grade_point(marks):
     try:
         marks = float(marks)
     except (ValueError, TypeError):
-        return 0   # Invalid marks treated as 0
+        return 0
 
     if marks >= 90:
         return 10
@@ -54,19 +54,18 @@ def marks_to_grade_point(marks):
 
 
 # ---------------------------------------
-# CGPA Calculation (Error-Safe)
+# Reusable GPA Calculator (Core Logic)
 # ---------------------------------------
-def calculate_cgpa(all_subjects, credits_map):
+def _calculate_gpa(subjects, credits_map):
 
     total_credits = 0
     total_weighted_points = 0
     missing_subjects = []
 
-    for subject in all_subjects:
+    for subject in subjects:
         code = subject.get("code")
         marks = subject.get("marks")
 
-        # 🔴 Subject not found in scheme
         if code not in credits_map:
             missing_subjects.append(code)
             continue
@@ -77,10 +76,22 @@ def calculate_cgpa(all_subjects, credits_map):
         total_credits += credit
         total_weighted_points += credit * grade_point
 
-    # 🔴 No valid credits found
     if total_credits == 0:
         return 0, missing_subjects
 
-    cgpa = round(total_weighted_points / total_credits, 2)
+    gpa = round(total_weighted_points / total_credits, 2)
+    return gpa, missing_subjects
 
-    return cgpa, missing_subjects
+
+# ---------------------------------------
+# SGPA (Semester GPA)
+# ---------------------------------------
+def calculate_sgpa(subjects, credits_map):
+    return _calculate_gpa(subjects, credits_map)
+
+
+# ---------------------------------------
+# Final CGPA (Weighted Across All Semesters)
+# ---------------------------------------
+def calculate_cgpa(all_subjects, credits_map):
+    return _calculate_gpa(all_subjects, credits_map)
